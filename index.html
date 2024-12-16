@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smartwatch Product Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="image-section">
+      <img src="./images/one.jpg" alt="Smartwatch" />
+    </div>
+    <div class="details-section">
+      <h1 class="roboto-bold heading-text-color">Classy Modern Smartwatch</h1>
+      <div class="ratting-section">
+        <div class="ratting">
+          <img src="./images/icon/star-fill.png" alt="star" />
+          <img src="./images/icon/star-fill.png" alt="star" />
+          <img src="./images/icon/star-fill.png" alt="star" />
+          <img src="./images/icon/star-half-fill.png" alt="star" />
+          <img src="./images/icon/star.png" alt="star" />
+        </div>
+        <div>
+          <p class="description-text-color reviews-text">(2 Reviews)</p>
+        </div>
+      </div>
+      <div class="price-section">
+        <span class="original-price">$99.00</span>
+        <span class="price roboto-bold">$79.00</span>
+      </div>
+      <p class="roboto-regular description-text-color description-text">
+        I must explain to you how all this mistaken idea of denoun cing ple
+        praising pain was born and I will give you a complete account of the
+        system, and expound the actual teaching.
+      </p>
+
+      <div class="type-section">
+        <div class="type">
+          <p class="roboto-regular description-text-color">Type</p>
+          <h4 class="roboto-bold heading-text-color">Watch</h4>
+        </div>
+        <div class="model">
+          <p class="roboto-regular description-text-color">Model Number</p>
+          <h4 class="roboto-bold heading-text-color">Forerunner 290XT</h4>
+        </div>
+      </div>
+
+      <div class="options">
+        <label for="color" class="roboto-bold text-color">Band Color:</label>
+        <div class="colors">
+          <div class="purple span" data-color="#816BFF"></div>
+          <div class="teal span" data-color="#1FCEC9"></div>
+          <div class="deep-teal span" data-color="#4B97D3"></div>
+          <div class="black span" data-color="#3B4747"></div>
+        </div>
+      </div>
+
+      <div class="options">
+        <label for="size" class="text-color">Wrist Size:</label>
+        <div class="sizes">
+          <button data-size="S" class="heading-text-color size-content">
+            S <span class="size-price">$69</span>
+          </button>
+          <button data-size="M" class="heading-text-color size-content">
+            M <span class="size-price">$79</span>
+          </button>
+          <button data-size="L" class="heading-text-color size-content">
+            L <span class="size-price">$89</span>
+          </button>
+          <button data-size="XL" class="heading-text-color size-content">
+            XL <span class="size-price">$99</span>
+          </button>
+        </div>
+      </div>
+      <div class="cart-controls">
+        <div class="quantity-controls">
+          <button class="decrease-btn" id="decrease">-</button>
+          <input type="text" id="quantity" value="0" readonly />
+          <button class="increase-btn" id="increase">+</button>
+        </div>
+        <button class="add-to-cart-btn" id="add-to-cart">Add to Cart</button>
+        <button class="wishlist-btn" id="wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#6576ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M20.8 4.6c-1.8-1.8-4.7-1.8-6.5 0l-1.3 1.3-1.3-1.3c-1.8-1.8-4.7-1.8-6.5 0s-1.8 4.7 0 6.5l7.8 7.8 7.8-7.8c1.8-1.8 1.8-4.7 0-6.5z">
+            </path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout">Checkout <span id="cart-count">0</span></div>
+  <script>
+    let cartCount = 0;
+    const quantityInput = document.getElementById("quantity");
+    const cartCountElement = document.getElementById("cart-count");
+
+    document.getElementById("increase").addEventListener("click", () => {
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+
+    document.getElementById("decrease").addEventListener("click", () => {
+      if (parseInt(quantityInput.value) > 0) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+      }
+    });
+
+    document.getElementById("add-to-cart").addEventListener("click", () => {
+      cartCount += parseInt(quantityInput.value);
+      cartCountElement.textContent = cartCount;
+      quantityInput.value = 0;
+    });
+
+    // Select all color options and the image element
+    const colorOptions = document.querySelectorAll(".colors .span");
+    const watchImage = document.querySelector(".image-section img");
+
+    // Map of colors to image paths
+    const colorToImageMap = {
+      "#816BFF": "./images/one.jpg", // Replace with actual image paths
+      "#1FCEC9": "./images/four.jpg",
+      "#4B97D3": "./images/three.jpg",
+      "#3B4747": "./images/two.jpg",
+    };
+
+    // Add click event listeners to each color option
+    colorOptions.forEach((colorOption) => {
+      colorOption.addEventListener("click", () => {
+        // Remove 'selected' class from all color options
+        colorOptions.forEach((item) => item.classList.remove("selected"));
+
+        // Add 'selected' class to the clicked color option
+        colorOption.classList.add("selected");
+
+        const selectedColor = colorOption.getAttribute("data-color");
+        // Update the image src based on the selected color
+        watchImage.src = colorToImageMap[selectedColor];
+      });
+    });
+
+
+    // Wrist size buttons and price update
+    const sizeButtons = document.querySelectorAll(".sizes button");
+    const originalPriceElement = document.querySelector(".original-price");
+    const discountedPriceElement = document.querySelector(".price");
+
+    // Map of size to prices
+    const sizeToPrices = {
+      S: { original: "$79.00", discounted: "$69.00" },
+      M: { original: "$89.00", discounted: "$79.00" },
+      L: { original: "$99.00", discounted: "$89.00" },
+      XL: { original: "$109.00", discounted: "$99.00" },
+    };
+
+    sizeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Remove 'selected' class from all size buttons
+        sizeButtons.forEach((btn) => btn.classList.remove("selected"));
+
+        // Add 'selected' class to the clicked size button
+        button.classList.add("selected");
+
+        const size = button.getAttribute("data-size");
+        // Update the prices based on the selected size
+        originalPriceElement.textContent = sizeToPrices[size].original;
+        discountedPriceElement.textContent = sizeToPrices[size].discounted;
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>
