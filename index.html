@@ -99,86 +99,49 @@
     </div>
   </div>
 
-  <div class="checkout">Checkout <span id="cart-count">0</span></div>
-  <script>
-    let cartCount = 0;
-    const quantityInput = document.getElementById("quantity");
-    const cartCountElement = document.getElementById("cart-count");
+  <div class="checkout" id="checkout">Checkout <span id="cart-count">0</span></div>
 
-    document.getElementById("increase").addEventListener("click", () => {
-      quantityInput.value = parseInt(quantityInput.value) + 1;
-    });
+  <div id="cart-modal" class="cart-modal hidden">
+    <div class="cart">
+      <h2 class="cart__title">Your Cart</h2>
+      <div class="cart__table">
+        <table>
+          <thead>
+            <tr class="roboto-regular">
+              <th>Item</th>
+              <th>Color</th>
+              <th>Size</th>
+              <th>Qnt</th>
+              <th>Price</th>
+            </tr>
+          </thead>
 
-    document.getElementById("decrease").addEventListener("click", () => {
-      if (parseInt(quantityInput.value) > 0) {
-        quantityInput.value = parseInt(quantityInput.value) - 1;
-      }
-    });
+          <tbody id="cart-items-table">
+            <!-- Cart items will be dynamically added here -->
+          </tbody>
 
-    document.getElementById("add-to-cart").addEventListener("click", () => {
-      cartCount += parseInt(quantityInput.value);
-      cartCountElement.textContent = cartCount;
-      quantityInput.value = 0;
-    });
+          <tfoot>
+            <tr>
+              <td>Total</td>
+              <td></td>
+              <td></td>
+              <td id="total-quantity">0</td>
+              <td id="total-price">$0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+        <!-- <div class="flex items-center"> -->
+        <div class="modal-buttons">
+          <button id="continue-shopping" class="shopping-btn">Continue Shopping</button>
+          <button class="add-to-cart-btn" id="proceed-checkout">Checkout</button>
+        </div>
+      </div>
+    </div>
+    <span class="close-btn" id="close-modal">&times;</span>
+  </div>
 
-    // Select all color options and the image element
-    const colorOptions = document.querySelectorAll(".colors .span");
-    const watchImage = document.querySelector(".image-section img");
-
-    // Map of colors to image paths
-    const colorToImageMap = {
-      "#816BFF": "./images/one.jpg", // Replace with actual image paths
-      "#1FCEC9": "./images/four.jpg",
-      "#4B97D3": "./images/three.jpg",
-      "#3B4747": "./images/two.jpg",
-    };
-
-    // Add click event listeners to each color option
-    colorOptions.forEach((colorOption) => {
-      colorOption.addEventListener("click", () => {
-        // Remove 'selected' class from all color options
-        colorOptions.forEach((item) => item.classList.remove("selected"));
-
-        // Add 'selected' class to the clicked color option
-        colorOption.classList.add("selected");
-
-        const selectedColor = colorOption.getAttribute("data-color");
-        // Update the image src based on the selected color
-        watchImage.src = colorToImageMap[selectedColor];
-      });
-    });
-
-
-    // Wrist size buttons and price update
-    const sizeButtons = document.querySelectorAll(".sizes button");
-    const originalPriceElement = document.querySelector(".original-price");
-    const discountedPriceElement = document.querySelector(".price");
-
-    // Map of size to prices
-    const sizeToPrices = {
-      S: { original: "$79.00", discounted: "$69.00" },
-      M: { original: "$89.00", discounted: "$79.00" },
-      L: { original: "$99.00", discounted: "$89.00" },
-      XL: { original: "$109.00", discounted: "$99.00" },
-    };
-
-    sizeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        // Remove 'selected' class from all size buttons
-        sizeButtons.forEach((btn) => btn.classList.remove("selected"));
-
-        // Add 'selected' class to the clicked size button
-        button.classList.add("selected");
-
-        const size = button.getAttribute("data-size");
-        // Update the prices based on the selected size
-        originalPriceElement.textContent = sizeToPrices[size].original;
-        discountedPriceElement.textContent = sizeToPrices[size].discounted;
-      });
-    });
-
-  </script>
-
+  <!-- JavaScript files  -->
+  <script src="./js/index.js"></script>
 </body>
 
 </html>

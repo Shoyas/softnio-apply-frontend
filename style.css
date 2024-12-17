@@ -122,13 +122,14 @@ body {
 
 .colors {
   display: flex;
+  align-items: center;
 }
 
 .colors .span {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  margin: 0 20px 20px 0;
+  margin: 0px 14px 17px 0px;
   cursor: pointer;
   border: 2px solid transparent;
 }
@@ -155,7 +156,9 @@ body {
 
 /* Highlight selected band color */
 .colors .span.selected {
-  border: 2px solid #6576ff;
+  border: 6px double #fff;
+  height: 24px;
+  width: 24px;
   border-radius: 50%;
 }
 
@@ -173,9 +176,11 @@ body {
   border: 1px solid #6576ff;
   color: #6576ff;
 }
-.size-content{
+
+.size-content {
   font-weight: bold;
 }
+
 .size-price {
   color: #8091a7;
 }
@@ -241,7 +246,7 @@ body {
   background: #6576ff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
   font-weight: bold;
 }
@@ -278,8 +283,7 @@ body {
   font-size: 18px;
   border-radius: 20px;
   cursor: pointer;
-  display: flex
-;
+  display: flex;
   align-items: center;
   transform: translateX(-50%);
 }
@@ -291,6 +295,182 @@ body {
   margin-left: 10px;
 }
 
+#checkout {
+  display: none;
+}
+
+/* Modal Design Start */
+.cart {
+  max-width: 651px; 
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 5px; 
+  background: white;
+  padding: 24px; 
+}
+
+@media (min-width: 768px) { 
+  .cart {
+    padding: 44px; 
+  }
+}
+
+.cart thead {
+  color: #bdbdbd;
+}
+
+.cart tbody {
+  color: #6e6e6e;
+}
+
+.cart__title {
+  font-size: 22px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.cart__table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px; 
+}
+
+.cart__table th,
+.cart__table td {
+  text-align: left;
+}
+.custom-table{
+  margin: 16px 0;
+}
+.cart__table th {
+  font-size: 14px;
+  color: #8091A7;
+  font-weight: 400;
+}
+
+.cart__table td {
+  height: 56px;
+  color: #364A63;
+  font-weight: 700;
+}
+.product-text-thin{
+  font-weight: 400 ! important;
+}
+
+.cart__table tr {
+  border-bottom: 1px solid #e0e0e0; 
+}
+
+.cart__table tfoot tr {
+  border: none;
+}
+
+.table-cart-img-name{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.cart__table td:first-child {
+  gap: 8px; 
+}
+
+.cart_image {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+.cart__table td:last-child,
+.cart__table th:last-child {
+  text-align: right;
+}
+
+.cart_image {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+}
+.shopping-btn{
+  color: #364A63;
+  padding: 8px 18px;
+  width: 152px;
+  height: 36px;
+  border: 1px solid #DBDFEA;
+  border-radius: 3px;
+}
+.modal-buttons{
+  display: flex;
+  gap: 24px;
+  justify-content: end;
+}
+
+/* Modal Design Ends  */
+
+/* Modal displaying starts*/
+.cart-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cart-modal.hidden {
+  display: none;
+}
+
+.cart-modal:not(.hidden) {
+  display: flex;
+}
+
+.cart {
+  background-color: white;
+  border-radius: 10px;
+  max-width: 90%;
+  width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #8091a7;
+}
+
+.close-btn:hover {
+  color: #364a63;
+}
+/* Modal displaying ends  */
+
+/*Cart Design Start*/
 @media (max-width: 768px) {
   .details-section h1 {
     font-size: 24px;
@@ -310,7 +490,14 @@ body {
     padding: 10px;
   }
 
+  .image-section img {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+
   .details-section {
-    padding: 10px;
+    margin-left: 0px;
+    padding-top: 40px;
   }
 }
