@@ -37,16 +37,16 @@ function updateDisplayedPrices() {
 
     switch (price) {
         case 69.00:
-            originalPrice = 59.00;
-            break;
-        case 79.00:
-            originalPrice = 69.00;
-            break;
-        case 89.00:
             originalPrice = 79.00;
             break;
-        case 99.00:
+        case 79.00:
             originalPrice = 89.00;
+            break;
+        case 89.00:
+            originalPrice = 99.00;
+            break;
+        case 99.00:
+            originalPrice = 109.00;
             break;
         default:
             originalPrice = price;
