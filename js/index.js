@@ -33,11 +33,29 @@ const sizePrices = {
 //! Here is the update function of displayed prices
 function updateDisplayedPrices() {
     const price = sizePrices[selectedSize];
-    const originalPrice = 99.00;
+    let originalPrice;
+
+    switch (price) {
+        case 69.00:
+            originalPrice = 59.00;
+            break;
+        case 79.00:
+            originalPrice = 69.00;
+            break;
+        case 89.00:
+            originalPrice = 79.00;
+            break;
+        case 99.00:
+            originalPrice = 89.00;
+            break;
+        default:
+            originalPrice = price;
+    }
 
     originalPriceElement.textContent = `$${originalPrice.toFixed(2)}`;
     currentPriceElement.textContent = `$${price.toFixed(2)}`;
 }
+
 
 //! Here is the update function of product image
 function updateProductImage() {
